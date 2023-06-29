@@ -1,6 +1,7 @@
 import os
 import glob
 from datetime import datetime
+import uuid
 import simplegallery.common as spg_common
 import simplegallery.media as spg_media
 from simplegallery.logic.base_gallery_logic import BaseGalleryLogic
@@ -23,7 +24,8 @@ def get_thumbnail_name(thumbnails_path, photo_name):
     :param photo_name: Name of the original photo
     :return: Full path to the thumbnail file
     """
-    photo_name_without_extension = os.path.basename(photo_name).split(".")[0]
+    my_list = os.path.basename(photo_name).split(".")
+    photo_name_without_extension = "|".join(my_list)
     return os.path.join(thumbnails_path, photo_name_without_extension + ".jpg")
 
 
